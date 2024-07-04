@@ -1,0 +1,20 @@
+[
+  {
+    "code": "GR1",
+    "name": "Green tea",
+    "price": 3.11,
+    "currency": "GBP"
+  },
+  {
+    "code": "SR1",
+    "name": "Strawberries",
+    "price": 5.00,
+    "currency": "GBP"
+  },
+  {
+    "code": "CF1",
+    "name": "Coffee",
+    "price": 11.23,
+    "currency": "GBP"
+  }
+]
