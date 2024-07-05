@@ -2,7 +2,8 @@ require_relative 'test_helper'
 
 class CheckoutTest < Minitest::Test
   def setup
-    @checkout = Checkout.new
+    pricing_rules = Discount.rules('discount_rules.rb')
+    @checkout = Checkout.new(pricing_rules)
   end
 
   GR1 = 'GR1'

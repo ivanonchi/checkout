@@ -1,8 +1,9 @@
 class Checkout
   attr_accessor :basket
 
-  def initialize
+  def initialize(pricing_rules)
     @basket = []
+    @pricing_rules = pricing_rules
   end
 
   def scan(code)
