@@ -1,10 +1,12 @@
 class Checkout
-  def initialize
+  attr_accessor :basket
 
+  def initialize
+    @basket = []
   end
 
   def scan(code)
-
+    @basket << code
   end
 
   def total
