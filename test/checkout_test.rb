@@ -5,13 +5,21 @@ class CheckoutTest < Minitest::Test
     @checkout = Checkout.new
   end
 
-  def item_gr1
-    'GR1'
+  GR1 = 'GR1'
+  SR1 = 'SR1'
+  CF1 = 'CF1'
+
+  def test_scan_item_adds_to_basket
+    @checkout.scan(GR1)
+    @checkout.scan(GR1)
+    assert_equal 2, @checkout.basket.count
   end
 
-  def test_scan_item
-    @checkout.scan(item_gr1)
-    assert_equal 1, @checkout.basket.count
+  def test_total_without_discounts
+    @checkout.scan(GR1)
+    @checkout.scan(SR1)
+    @checkout.scan(CF1)
+    assert_equal 19.34, @checkout.total
   end
 
   def test_buy_one_get_one_free_green_tea
