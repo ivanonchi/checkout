@@ -13,7 +13,7 @@ class ProductRegistry
     data = @db[code.to_s]
     raise RecordNotFound if data.nil?
 
-    Product.new(data)
+    data
   end
 
   private
