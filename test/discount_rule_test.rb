@@ -28,4 +28,12 @@ class DiscountRuleTest < Minitest::Test
     # Note that it shouldn't round to two decimals here, but only the `Checkout#total` output.
     assert_equal @product.price / 2, @rule.price
   end
+
+  def test_apply_every_2_rule_when_3_item_purchase
+    # A 2x1 rule on a £3.11 product
+    @rule.quantity_every 2
+    @rule.unit_price 0
+    # Buying 3 items gives one for free
+    assert_equal 6.22, @rule.apply(3)
+  end
 end
