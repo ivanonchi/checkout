@@ -1,4 +1,5 @@
 class Discount
+  attr_reader :rules
 
   def initialize
     @rules = {}
@@ -11,8 +12,9 @@ class Discount
     end
 
     def define(&)
-      discount_rules = Discount.new
-      discount_rules.instance_eval(&)
+      discount = Discount.new
+      discount.instance_eval(&)
+      discount.rules
     end
   end
 
