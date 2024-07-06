@@ -27,7 +27,7 @@ class DiscountRule
       normal_priced_count = product_count - discounted_item_count
       normal_priced_count * @product.price + discounted_item_count * price
     when 'at_least'
-      0
+      product_count * price
     end
   end
 

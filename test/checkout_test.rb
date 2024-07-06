@@ -18,7 +18,7 @@ class CheckoutTest < Minitest::Test
     assert_equal 2, @checkout.basket.values.sum
   end
 
-  def test_total_without_discounts
+  def test_total_without_discounts_applicable
     @checkout.scan(GR1)
     @checkout.scan(SR1)
     @checkout.scan(CF1)
@@ -29,6 +29,22 @@ class CheckoutTest < Minitest::Test
     @checkout.scan(GR1)
     @checkout.scan(GR1)
     assert_equal 3.11, @checkout.total
+  end
+
+  def test_buy_3_strawberries_for_discount
+    @checkout.scan(SR1)
+    @checkout.scan(SR1)
+    @checkout.scan(SR1)
+    # Discounted price of 4.50 x 3
+    assert_equal 13.50, @checkout.total
+  end
+
+  def test_buy_3_coffe_for_two_thirds_discount
+    @checkout.scan(CF1)
+    @checkout.scan(CF1)
+    @checkout.scan(CF1)
+    # Discounted price of (11.23 * 2 / 3) x 3
+    assert_equal 22.46, @checkout.total
   end
 
   def test_checkout_without_discount_rules
