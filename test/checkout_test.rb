@@ -15,7 +15,7 @@ class CheckoutTest < Minitest::Test
   def test_scan_item_adds_to_basket
     @checkout.scan(GR1)
     @checkout.scan(GR1)
-    assert_equal 2, @checkout.basket.count
+    assert_equal 2, @checkout.basket.values.sum
   end
 
   def test_total_without_discounts
