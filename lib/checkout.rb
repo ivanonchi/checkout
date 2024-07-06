@@ -17,7 +17,7 @@ class Checkout
       rule = @rules[code]
       price = rule&.apply(quantity) || price_for(code, quantity)
       total + price
-    end
+    end.round(2)
   end
 
   private

@@ -47,6 +47,40 @@ class CheckoutTest < Minitest::Test
     assert_equal 22.46, @checkout.total
   end
 
+  def test_gr1_sr1_gr1_gr1_cf1
+    @checkout.scan(GR1)
+    @checkout.scan(SR1)
+    @checkout.scan(GR1)
+    @checkout.scan(GR1)
+    @checkout.scan(CF1)
+    assert_equal 22.45, @checkout.total
+  end
+
+  def test_sr1_sr1_gr1_sr1
+    @checkout.scan(SR1)
+    @checkout.scan(SR1)
+    @checkout.scan(GR1)
+    @checkout.scan(SR1)
+    assert_equal 16.61, @checkout.total
+  end
+
+  def test_gr1_cf1_sr1_cf1_cf1
+    @checkout.scan(GR1)
+    @checkout.scan(CF1)
+    @checkout.scan(SR1)
+    @checkout.scan(CF1)
+    @checkout.scan(CF1)
+    assert_equal 30.57, @checkout.total
+  end
+
+  def test_four_coffees_should_round_total_to_cents
+    @checkout.scan(CF1)
+    @checkout.scan(CF1)
+    @checkout.scan(CF1)
+    @checkout.scan(CF1)
+    assert_equal 29.95, @checkout.total
+  end
+
   def test_checkout_without_discount_rules
     checkout = Checkout.new({})
     checkout.scan(GR1)
