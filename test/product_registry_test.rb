@@ -11,7 +11,7 @@ class ProductRegistryTest < Minitest::Test
 
   def test_find_item_gr1
     product = @pr.find(item_gr1)
-    assert_equal 'Green tea', product['name']
+    assert_equal 'Green tea', product.name
   end
 
   def test_find_non_existent_item

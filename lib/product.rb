@@ -9,7 +9,7 @@ class Product
 
   class << self
     def find(code)
-      new(product_registry.find(code))
+      product_registry.find(code)
     end
 
     private
