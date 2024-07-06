@@ -15,8 +15,14 @@ class Checkout
       code = product_quantity[0]
       quantity = product_quantity[1]
       rule = @rules[code]
-      price = rule.apply(quantity)
+      price = rule&.apply(quantity) || price_for(code, quantity)
       total + price
     end
+  end
+
+  private
+
+  def price_for(code, quantity)
+    Product.find(code).price * quantity
   end
 end

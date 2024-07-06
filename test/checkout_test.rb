@@ -30,4 +30,11 @@ class CheckoutTest < Minitest::Test
     @checkout.scan(GR1)
     assert_equal 3.11, @checkout.total
   end
+
+  def test_checkout_without_discount_rules
+    checkout = Checkout.new({})
+    checkout.scan(GR1)
+    checkout.scan(GR1)
+    assert_equal 6.22, checkout.total
+  end
 end
