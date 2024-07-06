@@ -7,6 +7,7 @@ class DiscountRule
     @product = product
   end
 
+  # DSL implementation (product block part) to configure the rule
   def method_missing(name, *args)
     super unless TOKENS.include? name
     rule_name = name.to_s
@@ -18,6 +19,7 @@ class DiscountRule
     end
   end
 
+  # Apply the rule to calculate product price
   def apply(product_count)
     return product_count * @product.price if product_count < quantity
 
@@ -31,6 +33,7 @@ class DiscountRule
     end
   end
 
+  # Needed to implement method_missing properly
   def respond_to_missing?(name, include_private = false)
     TOKENS.include?(name) or super
   end

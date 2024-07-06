@@ -12,8 +12,8 @@ class Checkout
 
   def total
     @basket.inject(0) do |total, product_quantity|
-      code = product_quantity[0]
-      quantity = product_quantity[1]
+      # Hash#inject gives the pair [key, value] in an array
+      code, quantity = product_quantity
       rule = @rules[code]
       price = rule&.apply(quantity) || price_for(code, quantity)
       total + price
