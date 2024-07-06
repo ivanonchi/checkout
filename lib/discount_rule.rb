@@ -14,7 +14,7 @@ class DiscountRule
       @quantity = args[0]
       @quantity_modifier = rule_name.delete_prefix('quantity_')
     elsif rule_name == 'unit_price'
-      @unit_price = block_given? ? yield(@product.price) : args[0]
+      @price = block_given? ? yield(@product.price) : args[0]
     end
   end
 
