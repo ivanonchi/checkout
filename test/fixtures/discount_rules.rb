@@ -1,3 +1,5 @@
+# Our rules file for testing, so the CXOs don't mess with our tests ;-)
+
 Discount.define do
   product 'GR1' do
     quantity_every 2

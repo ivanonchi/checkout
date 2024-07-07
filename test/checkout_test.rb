@@ -4,7 +4,7 @@ require_relative 'test_helper'
 
 class CheckoutTest < Minitest::Test
   def setup
-    pricing_rules = Discount.rules('discount_rules.rb')
+    pricing_rules = Discount.rules('test/fixtures/discount_rules.rb')
     @checkout = Checkout.new(pricing_rules)
   end
 
